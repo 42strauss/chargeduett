@@ -1,25 +1,88 @@
 {
   "expo": {
-    "name": "chinder",
-    "slug": "chinder",
-    "version": "1.0.0",
+    "name": "Charge Duett",
+    "slug": "chargeduett",
+    "scheme": "chargeduett",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "de.straussmedia.chargeduett",
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Charge Duett nutzt deinen Standort nur beim Einchecken, um die Ladestation zu finden, an der du gerade lädst. Dein genauer Standort wird nicht gespeichert und anderen nicht angezeigt.",
+        "NSPhotoLibraryUsageDescription": "Damit du Fotos für dein Profil auswählen kannst.",
+        "NSUserTrackingUsageDescription": "Damit wir dir passendere Werbung zeigen können. Charge Duett bleibt auch ohne Zustimmung vollständig nutzbar.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
+      "package": "de.straussmedia.chargeduett",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0E0E0E",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "blockedPermissions": [
+        "ACCESS_BACKGROUND_LOCATION"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "asyncRoutes": {
+            "web": false,
+            "default": false
+          }
+        }
+      ],
+      "expo-web-browser",
+      "expo-image",
+      "expo-localization",
+      "expo-apple-authentication",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Charge Duett nutzt deinen Standort nur beim Einchecken, um die Ladestation zu finden, an der du gerade lädst."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Damit du Fotos für dein Profil auswählen kannst.",
+          "cameraPermission": false
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511",
+          "userTrackingUsageDescription": "Damit wir dir passendere Werbung zeigen können. Charge Duett bleibt auch ohne Zustimmung vollständig nutzbar."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#FCC400"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
     }
   }
 }
